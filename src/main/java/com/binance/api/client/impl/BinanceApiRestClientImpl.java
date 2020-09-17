@@ -9,6 +9,7 @@ import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.market.*;
 import retrofit2.Call;
+import org.asynchttpclient.AsyncHttpClient;
 
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 
   private final BinanceApiService binanceApiService;
 
-  public BinanceApiRestClientImpl(String apiKey, String secret) {
-    binanceApiService = createService(BinanceApiService.class, apiKey, secret);
+  public BinanceApiRestClientImpl(String apiKey, String secret, AsyncHttpClient httpClient) {
+    binanceApiService = createService(BinanceApiService.class, httpClient, apiKey, secret);
   }
 
   // General endpoints
